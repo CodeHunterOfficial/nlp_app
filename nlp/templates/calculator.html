@@ -1,18 +1,68 @@
-﻿<!DOCTYPE html>
+﻿<!-- calculator.html -->
+<!DOCTYPE html>
+{% load static %}
 <html>
 <head>
-    <title>Калькулятор</title>
+    <title>Задачи NLP</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+        }
+        input[type="text"], textarea, select {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h2>Калькулятор</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Вычислить</button>
-    </form>
-    {% if result %}
-    <h3>Результат:</h3>
-    <textarea rows="4" cols="50" readonly>{{ result }}</textarea>
-    {% endif %}
+    <h2>Задачи NLP</h2>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_input_text">Исходной текст:</label>
+            {{ form.input_text }}
+            <label for="id_operation">Выберите операцию:</label>
+            {{ form.operation }}
+            <button type="submit">Решить задачу</button>
+            <label for="id_output_text">Результат:</label>
+            {{ form.output_text }}            
+        </form>
+    </div>
 </body>
 </html>
