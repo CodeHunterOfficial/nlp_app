@@ -22,7 +22,7 @@ from nlp import views
 urlpatterns = [
    # path("", views.index),
    # path('admin/', admin.site.urls),
-    path('', views.calculator, name='calculator'),
+    path('', views.calculate, name='calculate'),
     #path("postuser/", views.postuser),
 ]
 

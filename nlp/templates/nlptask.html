@@ -1,0 +1,24 @@
+﻿<!-- calculator.html -->
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Задачи NLP</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h2>Задачи NLP</h2>
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_input_text">Исходной текст:</label>
+            {{ form.input_text }}
+            <label for="id_task">Выберите задачу:</label>
+            {{ form.operation }}
+            <button type="submit">Решить задачу</button>
+            <label for="id_output_text">Результат:</label>
+            {{ form.output_text }}            
+        </form>
+    </div>
+</body>
+</html>
