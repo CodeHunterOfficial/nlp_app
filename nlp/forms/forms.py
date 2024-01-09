@@ -1,15 +1,27 @@
 ﻿from django import forms
 
 class CalculatorForm(forms.Form):
-    number1 = forms.FloatField(label='Первое число')
-    number2 = forms.FloatField(label='Второе число')
+    input_text = forms.CharField(label='Исходной текст', widget=forms.Textarea)    
     operation = forms.ChoiceField(
-        choices=(
-            ('add', '+'),
-            ('subtract', '-'),
-            ('multiply', '*'),
-            ('divide', '/'),
+        choices=(   
+            # Список операций с ключами на английском и значениями на русском
+            ("Tokenization", "Токенизация"),
+            ("Lemmatization", "Лемматизация"),
+            ("Stimming", "Стимминг"),
+            ("Word2Vec", "Векторное представление слов"),
+            ("NamedEntityRecognition", "Анализ сущностей"),
+            ("SyntaxAnalysis", "Анализ синтаксиса"),
+            ("SemanticAnalysis", "Анализ семантики"),
+            ("SentimentAnalysis", "Анализ тональности"),
+            ("EmotionAnalysis", "Анализ эмоций"),
+            ("KeywordExtraction", "Выделение ключевых слов"),
+            ("PartOfSpeechTagging", "Определение частей речи"),
+            ("NamedEntityRecognition", "Разметка именованных сущностей"),
+            ("CoreferenceResolution", "Разрешение кореференции"),
+            ("MachineTranslation", "Машинный перевод"),
+            ("TextGeneration", "Генерация текста")
         ),
-        widget=forms.Select(), # widget=forms.RadioSelect(),
+        widget=forms.Select(),  # Используем выпадающий список для выбора операции
         label='Выберите операцию'
     )
+    output_text = forms.CharField(label='Результат', widget=forms.Textarea, required=False)

@@ -1,28 +1,29 @@
 from django.shortcuts import render
-
 from nlp.forms.forms import CalculatorForm
+from nlp.nlpservices.middleware import Middleware
 
-
-
-def calculator(request):
-    result = None
+def calculate(request):
+    middleware = Middleware()
     if request.method == 'POST':
         form = CalculatorForm(request.POST)
         if form.is_valid():
-            number1 = form.cleaned_data['number1']
-            number2 = form.cleaned_data['number2']
+            input_text = form.cleaned_data['input_text']
             operation = form.cleaned_data['operation']
-            if operation == 'add':
-                result = number1 + number2
-            elif operation == 'subtract':
-                result = number1 - number2
-            elif operation == 'multiply':
-                result = number1 * number2
-            elif operation == 'divide':
-                if number2 != 0:
-                    result = number1 / number2
-                else:
-                    result = "Деление на ноль невозможно"
+            #library = form.cleaned_data['library']
+            library='nltk'
+            if operation == 'Tokenization':
+                output_text = middleware.tokenization(input_text, library)
+            elif operation == 'Lemmatization':
+                output_text = middleware.lematization(input_text, library)
+            elif operation == 'Stimming':
+                output_text = middleware.stemming(input_text, library)
+            elif operation == 'Word2Vec':
+                output_text = middleware.word2vec(input_text, "spacy")  
+            elif operation == 'SentimentAnalysis':
+                output_text = middleware.analyze_sentiment(input_text)                
+            else:
+                output_text = input_text.upper() + operation  # Пример: преобразование в верхний регистр
+            form = CalculatorForm(initial={'input_text': input_text, 'output_text': output_text})
     else:
         form = CalculatorForm()
-    return render(request, 'calculator.html', {'form': form, 'result': result})
+    return render(request, 'nlptask.html', {'form': form})
