@@ -7,10 +7,16 @@ class CalculatorForm(forms.Form):
             # Список операций с ключами на английском и значениями на русском
             ("Tokenization", "Токенизация"),
             ("Lemmatization", "Лемматизация"),
+            ("Stimming", "Стимминг"),
+            ("Word2Vec", "Векторное представление слов"),
+            ("NamedEntityRecognition", "Анализ сущностей"),
+            ("SyntaxAnalysis", "Анализ синтаксиса"),
+            ("SemanticAnalysis", "Анализ семантики"),
+            ("SentimentAnalysis", "Анализ тональности"),
+            ("EmotionAnalysis", "Анализ эмоций"),
             ("KeywordExtraction", "Выделение ключевых слов"),
             ("PartOfSpeechTagging", "Определение частей речи"),
             ("NamedEntityRecognition", "Разметка именованных сущностей"),
-            ("SentimentAnalysis", "Анализ тональности"),
             ("CoreferenceResolution", "Разрешение кореференции"),
             ("MachineTranslation", "Машинный перевод"),
             ("TextGeneration", "Генерация текста")
