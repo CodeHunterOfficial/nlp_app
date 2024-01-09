@@ -1,7 +1,6 @@
 ﻿import gensim
 import spacy
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-
 class WordEmbedding:
     def __init__(self, method):
         # Выбор метода для векторного представления слов
@@ -26,7 +25,7 @@ class WordEmbedding:
         # Векторное представление слов
         if self.method == 'word2vec':
             # Пример использования Word2Vec для векторизации текста
-            vectors = self.model[text]
+            vectors = [self.model[word] for word in text.split()]
         elif self.method == 'spacy':
             # Пример использования spaCy для векторизации текста
             doc = self.nlp(text)
