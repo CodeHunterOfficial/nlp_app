@@ -32,8 +32,8 @@ class Middleware:
         return vects_str
     
     @staticmethod
-    def analyze_sentiment(text):        
-        sentiment_analyzer = sentimentAnalyzer.SentimentAnalysis()
+    def analyze_sentiment(text, library):        
+        sentiment_analyzer = sentimentAnalyzer.SentimentAnalysis(library)
         result = sentiment_analyzer.analyze_sentiment(text)
         formatted_result = "\n".join([f"{item['label']}: {item['score']}" for item in result[0]])
         return formatted_result    
