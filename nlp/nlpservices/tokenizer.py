@@ -1,6 +1,6 @@
 ﻿import nltk
 import spacy
-from transformers import AutoTokenizer
+#from transformers import AutoTokenizer
 
 class Tokenizer:
     def __init__(self, library):
@@ -13,9 +13,9 @@ class Tokenizer:
             # Использование spacy для токенизации
             spacy.cli.download("en_core_web_sm")
             self.tokenizer = spacy.load('en_core_web_sm')
-        elif library == 'transformers':
+        #elif library == 'transformers':
             # Использование transformers для токенизации
-            self.tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+           # self.tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
         else:
             # Ошибка, если библиотека не поддерживается
             raise ValueError(f'Unsupported library: {library}')

@@ -20,9 +20,10 @@ def calculate(request):
             elif operation == 'Word2Vec':
                 output_text = middleware.word2vec(input_text, "spacy")  
             elif operation == 'SentimentAnalysis':
-                output_text = middleware.analyze_sentiment(input_text)                
+                output_text = middleware.analyze_sentiment(input_text)
+                print(input_text,output_text)            
             else:
-                output_text = input_text.upper() + operation  # Пример: преобразование в верхний регистр
+                output_text = input_text.upper()  # Пример: преобразование в верхний регистр
             form = CalculatorForm(initial={'input_text': input_text, 'output_text': output_text})
     else:
         form = CalculatorForm()
