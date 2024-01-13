@@ -9,12 +9,14 @@
 <body>
     <h2>Задачи NLP</h2>
     <div class="form-container">
-        <form method="post">
+        <form method="post" id="calculator-form">
             {% csrf_token %}
             <label for="id_input_text">Исходной текст:</label>
             {{ form.input_text }}
-            <label for="id_task">Выберите задачу:</label>
+            <label for="id_operation">Выберите задачу:</label>
             {{ form.operation }}
+            <label for="id_librarychoice">Выберите библиотеку:</label>
+            {{ form.librarychoice }}
             <button type="submit">Решить задачу</button>
             <label for="id_output_text">Результат:</label>
             {{ form.output_text }}            
